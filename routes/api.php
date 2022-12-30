@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IdPermitController;
 use App\Http\Controllers\PpeReqController;
-use App\Http\Controllers\LoginController;
+// use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
