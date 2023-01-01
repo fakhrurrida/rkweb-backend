@@ -7,6 +7,7 @@ use App\Http\Controllers\IdPermitController;
 use App\Http\Controllers\PpeReqController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,9 @@ Route::post('/login', LoginController::class);
  * @method "POST"
  */
 Route::post('/register', App\Http\Controllers\RegisterController::class)->name('register');
+
+/**
+ * route "/register"
+ * @method "POST"
+ */
+Route::post('/logout', App\Http\Controllers\LogoutController::class)->name('register');
