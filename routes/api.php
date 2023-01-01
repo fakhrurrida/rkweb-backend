@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IdPermitController;
 use App\Http\Controllers\PpeReqController;
-// use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,10 @@ Route::resource('ppe_req', PpeReqController::class);
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::post('/login', LoginController::class);
+Route::post('/login', LoginController::class);
+
+/**
+ * route "/register"
+ * @method "POST"
+ */
+Route::post('/register', App\Http\Controllers\RegisterController::class)->name('register');
