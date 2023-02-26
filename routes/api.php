@@ -8,6 +8,7 @@ use App\Http\Controllers\PpeReqController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ElisController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('id_permit', IdPermitController::class);
+
 Route::resource('ppe_req', PpeReqController::class);
+
+Route::resource('elis_stats', ElisController::class);
+
 Route::get('/', function () {
     return view('welcome');
 });
