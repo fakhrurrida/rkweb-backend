@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ElisController;
+use App\Http\Controllers\MedicalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::resource('id_permit', IdPermitController::class);
 Route::get('ppe_req', [PpeReqController::class, 'index']);
 Route::post('approve_ppe_req',[PpeReqController::class, 'approve_ppe']);
 Route::post('cancel_ppe_req', [PpeReqController::class, 'cancel_ppe']);
+Route::post('upload_mcu', [MedicalController::class, 'uploadHasilMCU']);
 
 Route::resource('elis_stats', ElisController::class);
 
@@ -39,13 +41,11 @@ Route::get('/', function () {
 Route::post('/login', LoginController::class);
 
 /**
- * route "/register"
  * @method "POST"
  */
 Route::post('/register', App\Http\Controllers\RegisterController::class)->name('register');
 
 /**
- * route "/register"
  * @method "POST"
  */
 Route::post('/logout', App\Http\Controllers\LogoutController::class)->name('register');
