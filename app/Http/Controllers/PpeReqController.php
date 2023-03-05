@@ -13,7 +13,7 @@ class PpeReqController extends Controller
      */
     public function index()
     {
-        return PpeReq::all();
+        return PpeReq::where('approval_code', 0)->get();
     }
 
     /**
@@ -57,6 +57,40 @@ class PpeReqController extends Controller
     public function edit($id)
     {
         //
+    }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel_ppe(Request $request)
+    {
+        $id = $request['id'];
+        $ppe_reqs = PpeReq::where('id', $id)->get();
+
+        foreach ($ppe_reqs as $ppe_req) {
+            $ppe_req->approval_code = 2;
+            $ppe_req->save();
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function approve_ppe(Request $request)
+    {
+        $id = $request['id'];
+        $ppe_reqs = PpeReq::where('id', $id)->get();
+
+        foreach ($ppe_reqs as $ppe_req) {
+            $ppe_req->approval_code = 1;
+            $ppe_req->save();
+        }
     }
 
     /**

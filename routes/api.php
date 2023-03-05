@@ -27,7 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('id_permit', IdPermitController::class);
 
-Route::resource('ppe_req', PpeReqController::class);
+Route::get('ppe_req', [PpeReqController::class, 'index']);
+Route::post('approve_ppe_req',[PpeReqController::class, 'approve_ppe']);
+Route::post('cancel_ppe_req', [PpeReqController::class, 'cancel_ppe']);
 
 Route::resource('elis_stats', ElisController::class);
 
