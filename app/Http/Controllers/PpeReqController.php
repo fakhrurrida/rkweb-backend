@@ -13,7 +13,7 @@ class PpeReqController extends Controller
      */
     public function index()
     {
-        return PpeReq::where('approval_code', 0)->get();
+        return PpeReq::all();
     }
 
     /**

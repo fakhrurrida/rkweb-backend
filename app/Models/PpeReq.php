@@ -25,6 +25,7 @@ class PpeReq extends Model
         'jabatan',
         'jenis_apd',
         'masa_expiry_apd',
-        'no_wr'
+        'no_wr',
+        'approval_code'
     ];
 }
