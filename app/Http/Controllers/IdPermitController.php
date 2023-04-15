@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\IdPermit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class IdPermitController extends Controller
 {
@@ -19,11 +20,54 @@ class IdPermitController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        //set validation
+        $validator = Validator::make($request->all(), [
+            'nama'      => 'required',
+            'nrp'     => 'required',
+            'sub_kontraktor'  => 'required',
+            'jabatan'  => 'required',
+            'pas_foto'  => 'required',
+            'kompetensi'  => 'required',
+            'status'  => 'required',
+            'masa_berlaku'  => 'required',
+            'aktivitas_terakhir' => 'required'
+        ]);
+
+        //if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        //create user
+        $id_permit = IdPermit::create([
+            'nama'      => $request->nama,
+            'nrp'     => $request->nrp,
+            'sub_kontraktor'  => $request->sub_kontraktor,
+            'jabatan'  => $request->jabatan,
+            'pas_foto'  => $request->pas_foto,
+            'kompetensi'  => $request->kompetensi,
+            'status'  => $request->status,
+            'masa_berlaku'  => $request->masa_berlaku,
+            'aktivitas_terakhir' => $request->aktivitas_terakhir
+        ]);
+
+        //return response JSON user is created
+        if($id_permit) {
+            return response()->json([
+                'success' => true,
+                'user'    => $id_permit,  
+            ], 201);
+        }
+
+        //return JSON process insert failed 
+        return response()->json([
+            'success' => false,
+        ], 409);
     }
 
     /**

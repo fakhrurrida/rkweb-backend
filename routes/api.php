@@ -26,7 +26,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('id_permit', IdPermitController::class);
+Route::get('id_permit', [PpeReqController::class, 'index']);
+Route::post('create_id_permit',[IdPermitController::class, 'create']);
+
 
 Route::get('ppe_req', [PpeReqController::class, 'index']);
 Route::post('approve_ppe_req',[PpeReqController::class, 'approve_ppe']);
