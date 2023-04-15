@@ -14,7 +14,7 @@ class IdPermit extends Model
      *
      * @var string
      */
-    protected $table = 'rk_permit';
+    protected $table = 'user_profiles';
 
     /**
      * The attributes that are mass assignable.
@@ -22,11 +22,11 @@ class IdPermit extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'nama',
+        'nama_lengkap',
         'nrp',
         'sub_kontraktor',
         'jabatan',
-        'pas_foto',
+        'upload_foto_link',
         'kompetensi',
         'status',
         'masa_berlaku',
