@@ -34,6 +34,7 @@ Route::get('ppe_req', [PpeReqController::class, 'index']);
 Route::post('approve_ppe_req',[PpeReqController::class, 'approve_ppe']);
 Route::post('cancel_ppe_req', [PpeReqController::class, 'cancel_ppe']);
 Route::post('upload_mcu', [MedicalController::class, 'uploadHasilMCU']);
+Route::post('get_medical_by_nrp', [MedicalController::class, 'getMedical']);
 
 Route::resource('elis_stats', ElisController::class);
 

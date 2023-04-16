@@ -18,6 +18,13 @@ class MedicalController extends Controller
         return Medical::all();
     }
 
+    public function getMedical(Request $request)
+    {
+        $nrp = $request['nrp'];
+        $medical = Medical::where('nrp', $nrp)->get();
+        return $medical;
+    }
+
     public function uploadHasilMCU(Request $request)
     {
         //set validation
