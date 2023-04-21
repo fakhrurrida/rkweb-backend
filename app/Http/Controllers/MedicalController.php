@@ -21,7 +21,7 @@ class MedicalController extends Controller
     public function getMedical(Request $request)
     {
         $nrp = $request['nrp'];
-        $medical = Medical::where('nrp', $nrp)->get();
+        $medical = Medical::where('user_id', $nrp)->get();
         return $medical;
     }
 
@@ -29,9 +29,12 @@ class MedicalController extends Controller
     {
         //set validation
         $validator = Validator::make($request->all(), [
-            'nrp'      => 'required',
-            'csv_hasil_mcu' => 'required|file|mimes:csv,txt',
-            'hasil'  => 'required'
+            // 'tanggal'      => 'required',
+            // 'csv_hasil_mcu' => 'required|file|mimes:csv,txt',
+            'diagnosa'  => 'required',
+            'terapi' => 'required',
+            'izin_sakit_dalam_hari' => 'required',
+            'nrp' => 'required'
         ]);
 
         //if validation fails
@@ -40,16 +43,21 @@ class MedicalController extends Controller
         }
 
         // Get the file from the request
-        $file = $request->file('csv_hasil_mcu');
+        // $file = $request->file('csv_hasil_mcu');
 
         // Get the contents of the file
         // $contents = Storage::get($file->path());
 
         //create medical
         $medical = Medical::create([
-            'nrp' => $request->nrp,
-            'mcu_csv_file' => $file,
-            'hasil' => $request->hasil
+            'tanggal' => $request->tanggal,
+            'diagnosa' => $request->diagnosa,
+            'terapi' => $request->terapi,
+            'izin_sakit_dalam_hari' => $request->izin_sakit_dalam_hari,
+            'user_id' => $request->nrp
+            // 'nrp' => $request->nrp,
+            // 'mcu_csv_file' => $file,
+            // 'hasil' => $request->hasil
         ]);
 
         //return response JSON user is created

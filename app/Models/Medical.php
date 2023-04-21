@@ -9,12 +9,14 @@ class Medical extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'hasil_mcu';
+    protected $table = 'riwayat_kesehatan';
 
     /**
      * The attributes that are mass assignable.
@@ -22,9 +24,14 @@ class Medical extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id',
-        'nrp',
-        'hasil',
-        'mcu_csv_file'
+        'tanggal',
+        'diagnosa',
+        'terapi',
+        'izin_sakit_dalam_hari',
+        'user_id'
+        // 'id',
+        // 'nrp',
+        // 'hasil',
+        // 'mcu_csv_file'
     ];
 }
