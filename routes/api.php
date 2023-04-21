@@ -10,6 +10,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ElisController;
 use App\Http\Controllers\MedicalController;
+use App\Http\Controllers\InductionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('induction', [InductionController::class, 'index']);
 Route::get('id_permit', [IdPermitController::class, 'index']);
 Route::post('create_id_permit',[IdPermitController::class, 'create']);
 
