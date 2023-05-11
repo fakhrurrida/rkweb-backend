@@ -85,10 +85,12 @@ class PpeReqController extends Controller
     public function approve_ppe(Request $request)
     {
         $id = $request['id'];
+        $wr = $request['wr'];
         $ppe_reqs = PpeReq::where('id', $id)->get();
 
         foreach ($ppe_reqs as $ppe_req) {
             $ppe_req->approval_code = 1;
+            $ppe_req->no_wr = $wr;
             $ppe_req->save();
         }
     }
