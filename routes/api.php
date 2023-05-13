@@ -12,6 +12,7 @@ use App\Http\Controllers\ElisController;
 use App\Http\Controllers\MedicalController;
 use App\Http\Controllers\InductionController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
